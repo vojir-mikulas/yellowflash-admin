@@ -16,7 +16,7 @@ const CreateItemPage = () => {
     }
     const handleSubmit = (e) =>{
         e.preventDefault()
-        axios.post(`http://localhost:3000/item/create`,{
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/item/create`,{
             name: name,
             details:details,
             price:price

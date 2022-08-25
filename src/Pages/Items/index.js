@@ -9,7 +9,7 @@ const Items = () => {
 
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`http://localhost:3000/item`,).then(response => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/item`,).then(response => {
             setItems(response.data)
         }).catch(error => {
             console.error("Error fetching data: ", error)
@@ -21,7 +21,7 @@ const Items = () => {
 
     }, [])
     const handleDelete = (id) =>{
-         axios.delete(`http://localhost:3000/item/single/${id}`,).catch(error => {
+         axios.delete(`${process.env.REACT_APP_SERVER_URL}/item/single/${id}`,).catch(error => {
             console.error("Error fetching data: ", error)
         })
 

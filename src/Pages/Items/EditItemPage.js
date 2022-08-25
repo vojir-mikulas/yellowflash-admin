@@ -20,7 +20,7 @@ const EditItemPage = () => {
     const [price, setPrice] = useState(0)
     const {id} = useParams()
     useEffect(() => {
-        axios.get(`http://localhost:3000/item/single/${id}`,).then(response => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/item/single/${id}`,).then(response => {
             setItem(response.data)
         }).catch(error => {
             console.error("Error fetching data: ", error)
@@ -48,7 +48,7 @@ const EditItemPage = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:3000/item/update`, {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/item/update`, {
             id:id,
             name: name,
             details: details,

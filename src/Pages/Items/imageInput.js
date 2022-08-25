@@ -7,7 +7,7 @@ const ImageInput = (props) => {
     const [preview, setPreview] = useState()
 
     useEffect(()=>{
-        setPreview(`http://localhost:3000/${props.item.images[props.number - 1] ? props.item.images[props.number - 1].url : ""}`)
+        setPreview(`${process.env.REACT_APP_SERVER_URL}/${props.item.images[props.number - 1] ? props.item.images[props.number - 1].url : ""}`)
         setLoading(false)
     },[])
     useEffect(() => {
@@ -25,7 +25,7 @@ const ImageInput = (props) => {
 
         let file = e.currentTarget.files[0]
         setSelectedFile(file)
-        axios.post('http://localhost:3000/images', {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/images`, {
             itemId: props.item.id,
             imgName: `image${props.number}`,
             image: file
